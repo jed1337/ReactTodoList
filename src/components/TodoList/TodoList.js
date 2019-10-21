@@ -1,12 +1,12 @@
 import React from 'react'
 import TodoItem from "../TodoItem/TodoItem";
 
-class TodoList extends React.Component{
+class TodoList extends React.Component {
     constructor(props) {
         super(props);
-        this.state={
+        this.state = {
             inputText: "",
-            todoItems:[]
+            todoItems: []
         }
     }
 
@@ -22,7 +22,7 @@ class TodoList extends React.Component{
     };
 
     render() {
-        return(
+        return (
             <div>
                 <input type="text" onChange={this.updateInputText}/>
                 <button onClick={this.createTodoListItem}>Add todo item</button>

@@ -1,6 +1,6 @@
 import React from 'react';
 
-class TodoItem extends React.Component{
+class TodoItem extends React.Component {
     constructor(props) {
         super(props);
     }
