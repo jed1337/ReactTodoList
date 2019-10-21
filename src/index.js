@@ -2,9 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import * as serviceWorker from './serviceWorker';
-import TodoItem from "./components/TodoItem/TodoItem";
+import TodoList from "./components/TodoList/TodoList";
 
-ReactDOM.render(<TodoItem />, document.getElementById('root'));
+ReactDOM.render(<TodoList />, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
