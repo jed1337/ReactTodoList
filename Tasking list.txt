@@ -7,3 +7,7 @@
     TodoItem
         checkbox
         text
+
+2. Props
+    TodoItem
+        Name
