@@ -1,0 +1,9 @@
+1. Rough structure of components
+    App
+    TodoList
+        Input 
+        Add item button
+        Todo list container
+    TodoItem
+        checkbox
+        text
