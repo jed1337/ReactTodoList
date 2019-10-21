@@ -24,9 +24,13 @@ class TodoList extends React.Component {
     render() {
         return (
             <div>
-                <input type="text" onChange={this.updateInputText}/>
-                <button onClick={this.createTodoListItem}>Add todo item</button>
-                <div>{this.state.todoItems}</div>
+                <h1>Todo List</h1>
+
+                <div className="todoItems">
+                    <input type="text" onChange={this.updateInputText}/>
+                    <button onClick={this.createTodoListItem}>Add todo item</button>
+                    <div>{this.state.todoItems}</div>
+                </div>
             </div>
         )
     }

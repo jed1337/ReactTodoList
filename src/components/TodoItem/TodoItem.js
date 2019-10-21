@@ -1,15 +1,12 @@
 import React from 'react';
+import './TodoItem.css';
 
 class TodoItem extends React.Component {
-    constructor(props) {
-        super(props);
-    }
-
     render() {
         return (
             <div>
                 <input type="checkbox"/>
-                <span>{this.props.contents}</span>
+                <span className="strikethrough">{this.props.contents}</span>
             </div>
         )
     }
