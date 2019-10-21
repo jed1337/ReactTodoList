@@ -11,3 +11,10 @@
 2. Props
     TodoItem
         Name
+
+3. State
+    TodoList
+        input
+        list of TodoItem
+    TodoItem
+        checkbox
