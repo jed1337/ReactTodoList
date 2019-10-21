@@ -1,4 +1,5 @@
 import React from 'react'
+import TodoItem from "../TodoItem/TodoItem";
 
 class TodoList extends React.Component{
     constructor(props) {
@@ -13,12 +14,19 @@ class TodoList extends React.Component{
         this.setState({inputText: e.target.value})
     };
 
+    createTodoListItem = () => {
+        let updatedTodoItems = this.state.todoItems;
+        updatedTodoItems.push(<TodoItem contents={this.state.inputText}/>);
+
+        this.setState({todoItems: updatedTodoItems});
+    };
+
     render() {
         return(
             <div>
                 <input type="text" onChange={this.updateInputText}/>
-                <button>Add todo item</button>
-                <div>{this.state.inputText}</div>
+                <button onClick={this.createTodoListItem}>Add todo item</button>
+                <div>{this.state.todoItems}</div>
             </div>
         )
     }
