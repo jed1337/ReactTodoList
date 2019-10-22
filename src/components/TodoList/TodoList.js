@@ -15,6 +15,9 @@ class TodoList extends React.Component {
     };
 
     createTodoListItem = () => {
+        if(!this.state.inputText){
+            return;
+        }
         this.setState({inputText: ""});
 
         let updatedTodoItems = this.state.todoItems;
