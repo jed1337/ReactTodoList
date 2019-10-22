@@ -15,6 +15,8 @@ class TodoList extends React.Component {
     };
 
     createTodoListItem = () => {
+        this.setState({inputText: ""});
+
         let updatedTodoItems = this.state.todoItems;
         updatedTodoItems.push(<TodoItem contents={this.state.inputText}/>);
 
@@ -27,7 +29,7 @@ class TodoList extends React.Component {
                 <h1>Todo List</h1>
 
                 <div className="todoItems">
-                    <input type="text" onChange={this.updateInputText}/>
+                    <input type="text" onChange={this.updateInputText} value={this.state.inputText}/>
                     <button onClick={this.createTodoListItem}>Add todo item</button>
                     <div>{this.state.todoItems}</div>
                 </div>
