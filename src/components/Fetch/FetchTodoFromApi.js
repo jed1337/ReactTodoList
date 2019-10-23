@@ -1,10 +1,11 @@
 import React from 'react'
 import {connect} from "react-redux";
 import TodoItem from "../TodoItem/TodoItem";
+import todoApi from "../api/todoApi";
 
 class FetchTodoFromApi extends React.Component {
     componentDidMount() {
-        fetch("http://localhost:8080/api/todos", {mode: 'cors'})
+        todoApi.getAll()
             .then(res => res.json())
             .then(res => {
                 console.log(res);

@@ -17,9 +17,9 @@ ReactDOM.render(
     <Provider store={store}>
         {/*<TodoList/>*/}
         {/*<ReduxTodoList/>*/}
-        {/*<FetchTodoFromApi/>*/}
+        <FetchTodoFromApi/>
         {/*<CounterGroup/>*/}
-        <BasicRouting/>
+        {/*<BasicRouting/>*/}
     </Provider>
     , document.getElementById('root'));
 
