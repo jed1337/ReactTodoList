@@ -6,6 +6,7 @@ import {Provider} from "react-redux";
 import {createStore} from "redux";
 import rootReducer from "./components/reducers";
 import FetchTodoFromApi from "./components/Fetch/FetchTodoFromApi";
+import CounterGroup from "./components/counters/CounterGroup";
 
 const store = createStore(
     rootReducer,
@@ -15,7 +16,8 @@ ReactDOM.render(
     <Provider store={store}>
         {/*<TodoList/>*/}
         {/*<ReduxTodoList/>*/}
-        <FetchTodoFromApi/>
+        {/*<FetchTodoFromApi/>*/}
+        <CounterGroup/>
     </Provider>
     , document.getElementById('root'));
 
