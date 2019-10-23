@@ -1,4 +1,5 @@
 import React from 'react';
+import TodoItem from "../TodoItem/TodoItem";
 
 const initialState = {
     todoItems: []
@@ -13,7 +14,7 @@ export default (state = initialState, action) => {
             //const newTodoItems = [...state.todoItems]; creates a new array from state.todoItems
 
             const newTodoItems = [...state.todoItems];
-            newTodoItems.push({text: action.payload, id: generateId()});
+            newTodoItems.push({content: action.payload, id: generateId()});
 
             return{...state, todoItems: newTodoItems};
 
@@ -22,7 +23,8 @@ export default (state = initialState, action) => {
                 //     ...state,
                 //     todoItems: [...state.todoItems, {text: action.payload, id: generateId()}]
                 // };
-
+        case "REFRESH_TODO_ITEM_LIST":
+            return {...state, todoItems: action.payload};
         default:
             return state;
     }

@@ -32,7 +32,7 @@ class ReduxTodoList extends React.Component {
                         {
                             this.props.todoItems
                                 .map(todoItem => (
-                                    <TodoItem contents={todoItem.text} key={todoItem.id} id={todoItem.id}/>
+                                    <TodoItem contents={todoItem.content} key={todoItem.id} id={todoItem.id}/>
                                 ))
                         }
                     </div>

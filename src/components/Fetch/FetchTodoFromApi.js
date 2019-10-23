@@ -3,6 +3,14 @@ import {connect} from "react-redux";
 import TodoItem from "../TodoItem/TodoItem";
 
 class FetchTodoFromApi extends React.Component {
+    componentDidMount() {
+        fetch("http://localhost:8080/api/todos", {mode: 'cors'})
+            .then(res => res.json())
+            .then(res => {
+                console.log(res);
+                this.props.refreshTodoItemList(res._embedded.todos);
+            });
+    }
 
     generateTodoItem = () => {
         // console.log(this.state);
@@ -24,7 +32,7 @@ class FetchTodoFromApi extends React.Component {
                         {
                             this.props.todoItems
                                 .map(todoItem => (
-                                    <TodoItem contents={todoItem.text} key={todoItem.id} id={todoItem.id}/>
+                                    <TodoItem contents={todoItem.content} key={todoItem.id} id={todoItem.id}/>
                                 ))
                         }
                     </div>
@@ -44,6 +52,11 @@ const mapDispatchToProps = (dispatch) => ({
             type: "ADD_TODO_ITEM",
             payload: inputText
         }),
+    refreshTodoItemList: (todoList) =>
+        dispatch({
+            type: "REFRESH_TODO_ITEM_LIST",
+            payload: todoList
+        })
 });
 
 // export default TodoList;
