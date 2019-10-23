@@ -67,7 +67,7 @@ const mapDispatchToProps = (dispatch) => ({
             .then(({id, status, content}) => {
                 dispatch({
                     type: "ADD_TODO_ITEM",
-                    payload: content
+                    payload: {id, status, content}
                 })
             })
     },

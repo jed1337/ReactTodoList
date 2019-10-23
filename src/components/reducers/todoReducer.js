@@ -20,7 +20,13 @@ export default (state = initialState, action) => {
             //shorter way
             return {
                 ...state,
-                todoItems: [...state.todoItems, {content: action.payload, id: generateId(), status: "active"}]
+                todoItems: [...state.todoItems,
+                    {
+                        content: action.payload.content,
+                        id: action.payload.id,
+                        status: action.payload.status
+                    }
+                ]
             };
 
         case "REFRESH_TODO_ITEM_LIST":
@@ -29,7 +35,7 @@ export default (state = initialState, action) => {
             const updatedArr = state.todoItems.map((todoItem) => {
                 if (todoItem.id === action.payload.id) {
                     return {...todoItem, status: action.payload.status};
-                } else{
+                } else {
                     return todoItem;
                 }
             });
@@ -39,7 +45,3 @@ export default (state = initialState, action) => {
             return state;
     }
 }
-
-const generateId = () => {
-    return new Date().getTime() + Math.random();
-};
