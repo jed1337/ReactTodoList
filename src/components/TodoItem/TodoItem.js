@@ -11,14 +11,19 @@ class TodoItem extends React.Component{
         // this.setState({
         //     isCompleted: !this.state.isCompleted
         // })
-        this.props.updateTodoItem(this.props.id, event.target.checked);
+        // console.log("event target checked ", event.target.checked);
+        const status = event.target.checked ? "completed" : "active";
+        // console.log("todo item id ", this.props.id);
+        // console.log("Status ", status);
+        this.props.updateTodoItem(this.props.id, status);
+
     };
 
     render() {
-        const checkedStatus = this.props.status==="completed"? "checked" : "";
+        const isCompleted = this.props.status === 'completed' ;
         return (
             <div>
-                <input type="checkbox" checked={checkedStatus} onChange={(event)=>this.toggleChange(event)}/>
+                <input type="checkbox" checked={isCompleted} onChange={(event)=>this.toggleChange(event)}/>
                 <span className="strikethrough">
                     {this.props.contents}
                 </span>

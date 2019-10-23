@@ -20,13 +20,21 @@ export default (state = initialState, action) => {
             //shorter way
             return {
                 ...state,
-                todoItems: [...state.todoItems, {content: action.payload, id: generateId()}]
+                todoItems: [...state.todoItems, {content: action.payload, id: generateId(), status: "active"}]
             };
 
         case "REFRESH_TODO_ITEM_LIST":
             return {...state, todoItems: action.payload};
         case "UPDATE_TODO_ITEM":
-            return state;
+            const updatedArr = state.todoItems.map((todoItem) => {
+                if (todoItem.id === action.payload.id) {
+                    return {...todoItem, status: action.payload.status};
+                } else{
+                    return todoItem;
+                }
+            });
+            return {...state, todoItems: updatedArr};
+
         default:
             return state;
     }
