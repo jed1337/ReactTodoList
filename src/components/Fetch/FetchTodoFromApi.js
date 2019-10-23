@@ -32,7 +32,12 @@ class FetchTodoFromApi extends React.Component {
                         {
                             this.props.todoItems
                                 .map(todoItem => (
-                                    <TodoItem contents={todoItem.content} key={todoItem.id} id={todoItem.id}/>
+                                    <TodoItem
+                                        contents={todoItem.content}
+                                        key={todoItem.id}
+                                        id={todoItem.id}
+                                        status={todoItem.status}
+                                    />
                                 ))
                         }
                     </div>

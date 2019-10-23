@@ -1,5 +1,4 @@
 import React from 'react';
-import TodoItem from "../TodoItem/TodoItem";
 
 const initialState = {
     todoItems: []
@@ -14,7 +13,7 @@ export default (state = initialState, action) => {
             //const newTodoItems = [...state.todoItems]; creates a new array from state.todoItems
 
             const newTodoItems = [...state.todoItems];
-            newTodoItems.push({content: action.payload, id: generateId()});
+            newTodoItems.push({content: action.payload, id: generateId(), status: "active"});
 
             return{...state, todoItems: newTodoItems};
 
