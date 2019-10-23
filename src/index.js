@@ -5,7 +5,7 @@ import * as serviceWorker from './serviceWorker';
 import {Provider} from "react-redux";
 import {createStore} from "redux";
 import rootReducer from "./components/reducers";
-import ReduxTodoList from "./components/TodoList/ReduxTodoList";
+import FetchTodoFromApi from "./components/Fetch/FetchTodoFromApi";
 
 const store = createStore(
     rootReducer,
@@ -14,7 +14,8 @@ const store = createStore(
 ReactDOM.render(
     <Provider store={store}>
         {/*<TodoList/>*/}
-        <ReduxTodoList/>
+        {/*<ReduxTodoList/>*/}
+        <FetchTodoFromApi/>
     </Provider>
     , document.getElementById('root'));
 
