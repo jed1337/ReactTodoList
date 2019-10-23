@@ -2,8 +2,17 @@ import React from 'react'
 import {connect} from "react-redux";
 import TodoItem from "../TodoItem/TodoItem";
 import todoApi from "../api/todoApi";
+import 'antd/dist/antd.css';
+import Title from "antd/es/typography/Title";
+import Button from "antd/lib/button";
+import Input from "antd/lib/input";
 
 class FetchTodoFromApi extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state={inputText:""}
+    }
+
     componentDidMount() {
         todoApi.getAll()
             .then(res => res.json())
@@ -14,19 +23,25 @@ class FetchTodoFromApi extends React.Component {
     }
 
     generateTodoItem = () => {
-        console.log(this.refs.inputText.value);
-        this.props.addTodoItem(this.refs.inputText.value);
+        this.props.addTodoItem(this.state.inputText);
     };
 
     render() {
         return (
             <div>
-                <h1>Todo List</h1>
+                <Title>Todo List</Title>
 
                 <div className="todoItems">
                     {/*<input type="text" onChange={this.updateInputText}/>*/}
-                    <input type="text" ref="inputText"/>
-                    <button onClick={this.generateTodoItem}>Add todo item</button>
+                    <Input type="text"
+                           value={this.state.inputText}
+                           onChange={e=>this.setState({inputText:e.target.value})}
+                    />
+
+                    <Button onClick={this.generateTodoItem}>Add todo item</Button>
+                    <Button onClick={()=>this.filterTodoItems("active")}>Only show active items</Button>
+                    <Button onClick={()=>this.filterTodoItems("completed")}>Only show completed items</Button>
+
                     <div>
                         {
                             this.props.todoItems
