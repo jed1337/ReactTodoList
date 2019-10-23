@@ -36,7 +36,7 @@ class FetchTodoFromApi extends React.Component {
                                         contents={todoItem.content}
                                         key={todoItem.id}
                                         id={todoItem.id}
-                                        status={todoItem.status}
+                                        isCompleted={todoItem.status}
                                     />
                                 ))
                         }
