@@ -58,12 +58,7 @@ const mapDispatchToProps = (dispatch) => ({
             status: "active"
         };
 
-        fetch("http://localhost:8080/api/todos", {
-            mode: 'cors',
-            method: 'POST',
-            headers: new Headers({'Content-Type': 'application/json'}),
-            body: JSON.stringify(newTodoItem)
-        })
+        todoApi.addNewTodoItem(newTodoItem)
             .then(res => res.json())
             .then(({id, status, content}) => {
                 dispatch({
@@ -74,14 +69,7 @@ const mapDispatchToProps = (dispatch) => ({
     },
 
     patchTodo: (id, status) => {
-        fetch("http://localhost:8080/api/todos/" + id, {
-                mode: 'cors',
-                method: 'PATCH',
-                body: JSON.stringify({
-                    "status": status
-                }),
-                headers: new Headers({'Content-Type': 'application/json'})
-            })
+        todoApi.patchExistingTodoItem(id, status)
             .then(res => res.json())
             .then(({id, status, content}) => {
                 dispatch({
