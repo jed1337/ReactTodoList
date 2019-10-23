@@ -12,18 +12,21 @@ export default (state = initialState, action) => {
             //
             //const newTodoItems = [...state.todoItems]; creates a new array from state.todoItems
 
-            const newTodoItems = [...state.todoItems];
-            newTodoItems.push({content: action.payload, id: generateId(), status: "active"});
-
-            return{...state, todoItems: newTodoItems};
+            // const newTodoItems = [...state.todoItems];
+            // newTodoItems.push({content: action.payload, id: generateId(), status: "active"});
+            //
+            // return{...state, todoItems: newTodoItems};
 
             //shorter way
-                // return {
-                //     ...state,
-                //     todoItems: [...state.todoItems, {text: action.payload, id: generateId()}]
-                // };
+            return {
+                ...state,
+                todoItems: [...state.todoItems, {content: action.payload, id: generateId()}]
+            };
+
         case "REFRESH_TODO_ITEM_LIST":
             return {...state, todoItems: action.payload};
+        case "UPDATE_TODO_ITEM":
+            return state;
         default:
             return state;
     }
