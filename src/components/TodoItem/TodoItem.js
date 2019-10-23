@@ -1,5 +1,8 @@
 import React from 'react';
 import './TodoItem.css';
+import 'antd/dist/antd.css';
+import {Input} from "antd";
+import Checkbox from "antd/lib/checkbox";
 
 class TodoItem extends React.Component{
     toggleChange = (event) => {
@@ -11,10 +14,12 @@ class TodoItem extends React.Component{
         const isCompleted = this.props.status === 'completed' ;
         return (
             <div>
-                <input type="checkbox" checked={isCompleted} onChange={(event)=>this.toggleChange(event)}/>
-                <span className="strikethrough">
+                <Checkbox type="checkbox" checked={isCompleted} onChange={(event)=>this.toggleChange(event)}>
                     {this.props.contents}
-                </span>
+                </Checkbox>
+
+                {/*<span className="strikethrough">*/}
+                {/*</span>*/}
             </div>
         );
     }
