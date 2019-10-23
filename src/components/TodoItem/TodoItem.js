@@ -1,7 +1,6 @@
 import React from 'react';
 import './TodoItem.css';
 import 'antd/dist/antd.css';
-import {Input} from "antd";
 import Checkbox from "antd/lib/checkbox";
 
 class TodoItem extends React.Component{
