@@ -10,7 +10,10 @@ import Input from "antd/lib/input";
 class FetchTodoFromApi extends React.Component {
     constructor(props) {
         super(props);
-        this.state={inputText:""}
+        this.state = {
+            inputText: "",
+            filter: showAllItems
+        }
     }
 
     componentDidMount() {
@@ -32,19 +35,21 @@ class FetchTodoFromApi extends React.Component {
                 <Title>Todo List</Title>
 
                 <div className="todoItems">
-                    {/*<input type="text" onChange={this.updateInputText}/>*/}
                     <Input type="text"
                            value={this.state.inputText}
-                           onChange={e=>this.setState({inputText:e.target.value})}
+                           onChange={e => this.setState({inputText: e.target.value})}
                     />
+                    <Button type="primary" onClick={this.generateTodoItem}>Add todo item</Button>
 
-                    <Button onClick={this.generateTodoItem}>Add todo item</Button>
-                    <Button onClick={()=>this.filterTodoItems("active")}>Only show active items</Button>
-                    <Button onClick={()=>this.filterTodoItems("completed")}>Only show completed items</Button>
+                    <div>
+                        <Button onClick={()=>{this.setState({filter: showAllItems})}}>Show all items</Button>
+                        <Button onClick={()=>{this.setState({filter: filterActiveTodoItems})}}>Only show active items</Button>
+                        <Button onClick={()=>{this.setState({filter: filterCompletedTodoItems})}}>Only show completed items</Button>
+                    </div>
 
                     <div>
                         {
-                            this.props.todoItems
+                            this.state.filter(this.props.todoItems)
                                 .map(todoItem => (
                                     <TodoItem
                                         contents={todoItem.content}
@@ -61,6 +66,20 @@ class FetchTodoFromApi extends React.Component {
         );
     }
 }
+
+const showAllItems = (todoItems) => {
+    return todoItems
+};
+
+const filterActiveTodoItems = (todoItems) => {
+    return todoItems
+        .filter(todoItem=>todoItem.status==="active");
+};
+
+const filterCompletedTodoItems = (todoItems) => {
+    return todoItems
+        .filter(todoItem=>todoItem.status==="completed");
+};
 
 const mapStateToProps = (reduxStore) => ({
     todoItems: reduxStore.todoReducer.todoItems
