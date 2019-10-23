@@ -1,29 +1,22 @@
 import React from 'react'
+import {connect} from "react-redux";
 import TodoItem from "../TodoItem/TodoItem";
 
-class TodoList extends React.Component {
+class ReduxTodoList extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
-            inputText: "",
-            todoItems: []
-        }
+        this.state = {inputText: ""};
     }
 
     updateInputText = (e) => {
-        this.setState({inputText: e.target.value})
+        this.setState({inputText: e.target.value});
     };
 
-    createTodoListItem = () => {
-        if(!this.state.inputText){
-            return;
-        }
-        this.setState({inputText: ""});
-
-        let updatedTodoItems = this.state.todoItems;
-        updatedTodoItems.push(<TodoItem contents={this.state.inputText}/>);
-
-        this.setState({todoItems: updatedTodoItems});
+    generateTodoItem = () => {
+        // console.log(this.state);
+        // this.props.addTodoItem(this.state.inputText);
+        console.log(this.refs.inputText.value);
+        this.props.addTodoItem(this.refs.inputText.value);
     };
 
     render() {
@@ -32,13 +25,34 @@ class TodoList extends React.Component {
                 <h1>Todo List</h1>
 
                 <div className="todoItems">
-                    <input type="text" onChange={this.updateInputText} value={this.state.inputText}/>
-                    <button onClick={this.createTodoListItem}>Add todo item</button>
-                    <div>{this.state.todoItems}</div>
+                    {/*<input type="text" onChange={this.updateInputText}/>*/}
+                    <input type="text" ref="inputText"/>
+                    <button onClick={this.generateTodoItem}>Add todo item</button>
+                    <div>
+                        {
+                            this.props.todoItems
+                                .map(todoItem => (
+                                    <TodoItem contents={todoItem.text} key={todoItem.id} id={todoItem.id}/>
+                                ))
+                        }
+                    </div>
                 </div>
             </div>
-        )
+        );
     }
 }
 
-export default TodoList;
+const mapStateToProps = (reduxStore) => ({
+    todoItems: reduxStore.todoReducer.todoItems
+});
+
+const mapDispatchToProps = (dispatch) => ({
+    addTodoItem: (inputText) =>
+        dispatch({
+            type: "ADD_TODO_ITEM",
+            payload: inputText
+        }),
+});
+
+// export default TodoList;
+export default connect(mapStateToProps, mapDispatchToProps)(ReduxTodoList);

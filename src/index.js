@@ -2,10 +2,10 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import * as serviceWorker from './serviceWorker';
-import TodoList from "./components/TodoList/TodoList";
 import {Provider} from "react-redux";
 import {createStore} from "redux";
 import rootReducer from "./components/reducers";
+import ReduxTodoList from "./components/TodoList/ReduxTodoList";
 
 const store = createStore(
     rootReducer,
@@ -13,7 +13,8 @@ const store = createStore(
 );
 ReactDOM.render(
     <Provider store={store}>
-        <TodoList/>
+        {/*<TodoList/>*/}
+        <ReduxTodoList/>
     </Provider>
     , document.getElementById('root'));
 
