@@ -1,8 +1,5 @@
 import React from 'react'
 import TodoItem from "../TodoItem/TodoItem";
-import './TodoList.css';
-import doge from './doge.png';
-import logo from "../../logo.svg";
 
 class TodoList extends React.Component {
     constructor(props) {
@@ -33,7 +30,6 @@ class TodoList extends React.Component {
         return (
             <div>
                 <h1>Todo List</h1>
-                <img src={doge} className="App-logo" alt="DOGE" />
 
                 <div className="todoItems">
                     <input type="text" onChange={this.updateInputText} value={this.state.inputText}/>
